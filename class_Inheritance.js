@@ -40,3 +40,9 @@ class User{
 }
 User.staticMethod();
 
+// That actually does the same as assigning it as a property directly:
+class User1 { }
+    User1.staticMethod = function() {
+        console.log(this === User1)
+    }
+User1.staticMethod();
