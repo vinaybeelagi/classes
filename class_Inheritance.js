@@ -46,3 +46,24 @@ class User1 { }
         console.log(this === User1)
     }
 User1.staticMethod();
+
+// Usually, static methods are used to implement functions that belong to the class as a whole, but not to any particular object of it.
+// For instance, we have Article objects and need a function to compare them.
+// A natural solution would be to add Article.compare static method:
+class Article {
+    constructor(title,date){
+        this.title = title;
+        this.date = date;
+    }
+    static compare(articleA,articleB){
+        return articleA.date-articleB.date;
+    }
+}
+let articles = [
+    new Article("HTML", new Date(2019, 1, 1)),
+    new Article("CSS", new Date(2019, 0, 1)),
+    new Article("JavaScript", new Date(2019, 11, 1))
+  ];
+  articles.sort(Article.compare);
+  console.log(articles[0].title);
+
