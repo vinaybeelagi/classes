@@ -34,3 +34,26 @@ alert( a instanceof B ); // true
 /* ANS :instanceof does not care about the function, but rather about its prototype, that it matches against the prototype chain.
 And here a.__proto__ == B.prototype, so instanceof returns true.
 So, by the logic of instanceof, the prototype actually defines the type, not the constructor function.*/
+
+// A mixin example.
+let sayHiMixin = {
+    sayHi() {
+      alert(`Hello ${this.name}`);
+    },
+    sayBye() {
+      alert(`Bye ${this.name}`);
+    }
+  };
+  
+  // usage:
+  class User {
+    constructor(name) {
+      this.name = name;
+    }
+  }
+  
+  // copy the methods
+  Object.assign(User.prototype, sayHiMixin);
+  
+  // now User can say hi
+  new User("Dude").sayHi(); // Hello Dude!
