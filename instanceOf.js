@@ -57,3 +57,28 @@ let sayHiMixin = {
   
   // now User can say hi
   new User("Dude").sayHi(); // Hello Dude!
+
+//   mixin
+// Define a mixin
+const loggingMixin = {
+    logMessage(message) {
+      console.log(`Log: ${message}`);
+    }
+  };
+  
+  // Create a class that uses the mixin
+  class User {
+    constructor(name) {
+      this.name = name;
+    }
+  }
+  
+  // Apply the mixin to the class
+  Object.assign(User.prototype, loggingMixin);
+  
+  // Create an instance of the class
+  const user1 = new User("John");
+  
+  // Use the method from the mixin
+  user1.logMessage("Hello, world!");
+  
