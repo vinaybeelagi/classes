@@ -79,3 +79,14 @@ class Rabbit extends Object {
   
   console.log( rabbit.hasOwnProperty('name') ); // true
 
+// Internal and external interface
+class CoffeMachine {
+    waterAmount = 0;
+
+    constructor(power) {
+        this.power = power;
+        console.log(`coffe m/c power:${power}`);
+    }
+}
+let coffeMachine = new CoffeMachine(100);
+coffeMachine.waterAmount = 200;
