@@ -1,45 +1,75 @@
 // The “try…catch” syntax
-try {
-        //code...
-}
-catch(err) {
-//error message
-}
+// try {
+//         //code...
+// }
+// catch(err) {
+// //error message
+// }
 
-// JSON.parse of try..catch.
-let json = '{"name":"john","age":30}';
-let user = JSON.parse(json);
-console.log(user.name);
-console.log(user.age);
+// // JSON.parse of try..catch.
+// let json = '{"name":"john","age":30}';
+// let user = JSON.parse(json);
+// console.log(user.name);
+// console.log(user.age);
 
-// task-Finally or just the code?
-function f() {
-    try {
-        console.log('start');
-      return "result";
-    } catch (err) {
-      /// ...
-    } finally {
-        console.log('cleanup!');
-    }
-  }
+// // task-Finally or just the code?
+// function f() {
+//     try {
+//         console.log('start');
+//       return "result";
+//     } catch (err) {
+//       /// ...
+//     } finally {
+//         console.log('cleanup!');
+//     }
+//   }
   
-  f(); // cleanup!
+//   f(); // cleanup!
 
-  //when there’s a throw, like here:
-  function f() {
+//   //when there’s a throw, like here:
+//   function f() {
+//     try {
+//         console.log('start');
+//       throw new Error("an error");
+//     } catch (err) {
+//       // ...
+//       if("can't handle the error") {
+//         throw err;
+//       }
+  
+//     } finally {
+//         console.log('cleanup!')
+//     }
+//   }
+  
+//   f(); // cleanup!
+
+  // example-1
+  function divideNumbers(a, b) {
     try {
-        console.log('start');
-      throw new Error("an error");
-    } catch (err) {
-      // ...
-      if("can't handle the error") {
-        throw err;
+      if (b === 0) {
+        throw new Error("Cannot divide by zero.");
       }
-  
+      return a / b;
+    } catch (error) {
+      console.error("Error caught:", error.message);
+      // You can choose to handle the error or rethrow it
+      throw error; // Rethrowing the same error
     } finally {
-        console.log('cleanup!')
+      console.log("Division operation completed."); // This will always execute
     }
   }
   
-  f(); // cleanup!
+  // Example usage:
+  try {
+    let result = divideNumbers(10, 2);
+    console.log("Result:", result);
+    
+    result = divideNumbers(8, 0); // This will throw an error
+    console.log("Result:", result); // This line won't be reached due to the error
+  } catch (outerError) {
+    console.error("Outer catch block:", outerError.message);
+  } finally {
+    console.log("All operations completed."); // This will always execute
+  }
+  
